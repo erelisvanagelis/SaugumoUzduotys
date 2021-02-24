@@ -40,18 +40,18 @@ namespace Saugumas_2
             this.cypheredTextBox = new System.Windows.Forms.TextBox();
             this.decypherTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.selectInputButton = new System.Windows.Forms.Button();
-            this.confirmInputButton = new System.Windows.Forms.Button();
-            this.confirmOutputButton = new System.Windows.Forms.Button();
+            this.writeOutputButton = new System.Windows.Forms.Button();
             this.selectOutputButton = new System.Windows.Forms.Button();
+            this.readInputButton = new System.Windows.Forms.Button();
+            this.selectInputButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -162,16 +162,14 @@ namespace Saugumas_2
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cypher settings";
             // 
-            // radioButton1
+            // label2
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(182, 98);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(66, 28);
-            this.radioButton1.TabIndex = 23;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "ECB";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(61, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 24);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Moda:";
             // 
             // radioButton2
             // 
@@ -184,25 +182,27 @@ namespace Saugumas_2
             this.radioButton2.Text = "CBC";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // radioButton1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 100);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 24);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Moda:";
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(182, 98);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(66, 28);
+            this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "ECB";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.confirmOutputButton);
+            this.groupBox2.Controls.Add(this.writeOutputButton);
             this.groupBox2.Controls.Add(this.selectOutputButton);
-            this.groupBox2.Controls.Add(this.confirmInputButton);
+            this.groupBox2.Controls.Add(this.readInputButton);
             this.groupBox2.Controls.Add(this.selectInputButton);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.outputTextBox);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.inputTextBox);
             this.groupBox2.Location = new System.Drawing.Point(475, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(457, 269);
@@ -210,21 +210,45 @@ namespace Saugumas_2
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "External input/output";
             // 
-            // label3
+            // writeOutputButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 24);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Input:";
+            this.writeOutputButton.Location = new System.Drawing.Point(258, 200);
+            this.writeOutputButton.Name = "writeOutputButton";
+            this.writeOutputButton.Size = new System.Drawing.Size(193, 33);
+            this.writeOutputButton.TabIndex = 33;
+            this.writeOutputButton.Text = "Write";
+            this.writeOutputButton.UseVisualStyleBackColor = true;
+            this.writeOutputButton.Click += new System.EventHandler(this.writeOutputButton_Click);
             // 
-            // textBox1
+            // selectOutputButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(360, 29);
-            this.textBox1.TabIndex = 27;
+            this.selectOutputButton.Location = new System.Drawing.Point(18, 200);
+            this.selectOutputButton.Name = "selectOutputButton";
+            this.selectOutputButton.Size = new System.Drawing.Size(193, 33);
+            this.selectOutputButton.TabIndex = 32;
+            this.selectOutputButton.Text = "Select path";
+            this.selectOutputButton.UseVisualStyleBackColor = true;
+            this.selectOutputButton.Click += new System.EventHandler(this.selectOutputButton_Click);
+            // 
+            // readInputButton
+            // 
+            this.readInputButton.Location = new System.Drawing.Point(258, 63);
+            this.readInputButton.Name = "readInputButton";
+            this.readInputButton.Size = new System.Drawing.Size(193, 33);
+            this.readInputButton.TabIndex = 31;
+            this.readInputButton.Text = "Read";
+            this.readInputButton.UseVisualStyleBackColor = true;
+            this.readInputButton.Click += new System.EventHandler(this.readInputButton_Click);
+            // 
+            // selectInputButton
+            // 
+            this.selectInputButton.Location = new System.Drawing.Point(18, 63);
+            this.selectInputButton.Name = "selectInputButton";
+            this.selectInputButton.Size = new System.Drawing.Size(193, 33);
+            this.selectInputButton.TabIndex = 30;
+            this.selectInputButton.Text = "Select path";
+            this.selectInputButton.UseVisualStyleBackColor = true;
+            this.selectInputButton.Click += new System.EventHandler(this.selectInputButton_Click);
             // 
             // label4
             // 
@@ -235,48 +259,28 @@ namespace Saugumas_2
             this.label4.TabIndex = 28;
             this.label4.Text = "Output:";
             // 
-            // textBox2
+            // outputTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(91, 165);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(360, 29);
-            this.textBox2.TabIndex = 29;
+            this.outputTextBox.Location = new System.Drawing.Point(91, 165);
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.Size = new System.Drawing.Size(360, 29);
+            this.outputTextBox.TabIndex = 29;
             // 
-            // selectInputButton
+            // label3
             // 
-            this.selectInputButton.Location = new System.Drawing.Point(18, 63);
-            this.selectInputButton.Name = "selectInputButton";
-            this.selectInputButton.Size = new System.Drawing.Size(193, 33);
-            this.selectInputButton.TabIndex = 30;
-            this.selectInputButton.Text = "Select path";
-            this.selectInputButton.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(29, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 24);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Input:";
             // 
-            // confirmInputButton
+            // inputTextBox
             // 
-            this.confirmInputButton.Location = new System.Drawing.Point(258, 63);
-            this.confirmInputButton.Name = "confirmInputButton";
-            this.confirmInputButton.Size = new System.Drawing.Size(193, 33);
-            this.confirmInputButton.TabIndex = 31;
-            this.confirmInputButton.Text = "Read";
-            this.confirmInputButton.UseVisualStyleBackColor = true;
-            // 
-            // confirmOutputButton
-            // 
-            this.confirmOutputButton.Location = new System.Drawing.Point(258, 200);
-            this.confirmOutputButton.Name = "confirmOutputButton";
-            this.confirmOutputButton.Size = new System.Drawing.Size(193, 33);
-            this.confirmOutputButton.TabIndex = 33;
-            this.confirmOutputButton.Text = "Write";
-            this.confirmOutputButton.UseVisualStyleBackColor = true;
-            // 
-            // selectOutputButton
-            // 
-            this.selectOutputButton.Location = new System.Drawing.Point(18, 200);
-            this.selectOutputButton.Name = "selectOutputButton";
-            this.selectOutputButton.Size = new System.Drawing.Size(193, 33);
-            this.selectOutputButton.TabIndex = 32;
-            this.selectOutputButton.Text = "Select path";
-            this.selectOutputButton.UseVisualStyleBackColor = true;
+            this.inputTextBox.Location = new System.Drawing.Point(91, 28);
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(360, 29);
+            this.inputTextBox.TabIndex = 27;
             // 
             // Form1
             // 
@@ -314,14 +318,14 @@ namespace Saugumas_2
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button confirmOutputButton;
+        private System.Windows.Forms.Button writeOutputButton;
         private System.Windows.Forms.Button selectOutputButton;
-        private System.Windows.Forms.Button confirmInputButton;
+        private System.Windows.Forms.Button readInputButton;
         private System.Windows.Forms.Button selectInputButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox inputTextBox;
     }
 }
 
