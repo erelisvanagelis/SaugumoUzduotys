@@ -17,12 +17,40 @@ namespace Saugumas_2
             InitializeComponent();
         }
 
+        private void KeyTextBoxChanged(object sender, EventArgs e)
+        {
+            currentLabel.Text = keyTextBox.Text.Length.ToString();
+        }
+
+        private void KeySizeRadioButtonChanged(object sender, EventArgs e)
+        {
+            foreach(RadioButton r in keySizeGroupBox.Controls)
+            {
+                if (r.Checked == true)
+                {
+                    maxLabel.Text = (Convert.ToInt32(r.Text) / 8).ToString();
+                }
+
+            }
+        }
+
         private void cypherButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Cypher cypher = new Cypher(cypherTextBox.Text, keyTextBox.Text);
+                string mode;
+                if(ecbRadioButton.Checked == true)
+                {
+                    mode = "ECB";
+                }
+                else
+                {
+                    mode = "CBC";
+                }
+                Cypher cypher = new Cypher(cypherTextBox.Text, keyTextBox.Text, maxLabel.Text, mode);
+                //richTextBox1.Text = cypher.CypherMessage();
                 cypheredTextBox.Text = cypher.CypherMessage();
+                //cypher.Main();
             }
             catch (Exception exc)
             {
@@ -34,7 +62,16 @@ namespace Saugumas_2
         {
             try
             {
-                Cypher cypher = new Cypher(cypheredTextBox.Text, keyTextBox.Text);
+                string mode;
+                if (ecbRadioButton.Checked == true)
+                {
+                    mode = "ECB";
+                }
+                else
+                {
+                    mode = "CBC";
+                }
+                Cypher cypher = new Cypher(cypheredTextBox.Text, keyTextBox.Text, maxLabel.Text, mode);
                 decypherTextBox.Text = cypher.DecypherMessage();
             }
             catch (Exception exc)
