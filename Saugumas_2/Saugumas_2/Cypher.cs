@@ -13,6 +13,7 @@ namespace Saugumas_2
         private string message;
         private int keySize;
         private static Aes aes;
+        private static byte[] test;
 
         public Cypher(string message, string key, string keySize, string mode)
         {
@@ -34,6 +35,8 @@ namespace Saugumas_2
             aes = Aes.Create(); 
             aes.KeySize = this.keySize * 8;
             aes.Key = Encoding.ASCII.GetBytes(key);
+            aes.IV = Encoding.Unicode.GetBytes("01234567");
+            aes.Padding = PaddingMode.PKCS7;
 
             if (mode == "ECB")
                 aes.Mode = CipherMode.ECB;
@@ -47,14 +50,10 @@ namespace Saugumas_2
         {
             byte[] encrypted;
 
-            using (Aes aesAlg = Aes.Create())
+            using (aes)
             {
-                aesAlg.Key = aes.Key;
-                aesAlg.IV = aes.IV;
-                aesAlg.Mode = aes.Mode;
-                Console.WriteLine(aesAlg.Mode);
                 // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
                 // Create the streams used for encryption.
                 using (MemoryStream msEncrypt = new MemoryStream())
@@ -67,6 +66,7 @@ namespace Saugumas_2
                             swEncrypt.Write(message);
                         }
                         encrypted = msEncrypt.ToArray();
+                        test = encrypted;
                     }
                 }
             }
@@ -76,22 +76,17 @@ namespace Saugumas_2
         public string DecypherMessage()
         {
             string plaintext = null;
-            using (Aes aesAlg = Aes.Create())
+            using (aes)
             {
-                aesAlg.Key = aes.Key;
-                aesAlg.IV = aes.IV;
-                aesAlg.Mode = aes.Mode;
-                Console.WriteLine(aesAlg.Mode);
                 // Create a decryptor to perform the stream transform.
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
                 // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(Encoding.Unicode.GetBytes(message)))
+                using (MemoryStream msDecrypt = new MemoryStream(/*test*/Encoding.Unicode.GetBytes(message)))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
                         using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                         {
-
                             // Read the decrypted bytes from the decrypting stream
                             // and place them in a string.
                             plaintext = srDecrypt.ReadToEnd();
@@ -99,7 +94,6 @@ namespace Saugumas_2
                     }
                 }
             }
-
             return plaintext;
         }
     }
