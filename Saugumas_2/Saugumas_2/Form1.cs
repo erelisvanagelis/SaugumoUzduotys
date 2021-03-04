@@ -133,5 +133,17 @@ namespace Saugumas_2
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void readEncryptedButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cypheredTextBox.Text = System.IO.File.ReadAllText(inputTextBox.Text);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

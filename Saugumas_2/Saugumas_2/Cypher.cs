@@ -37,7 +37,6 @@ namespace Saugumas_2
             aes.Key = Encoding.ASCII.GetBytes(key);
             aes.IV = Encoding.Unicode.GetBytes("01234567");
             aes.Padding = PaddingMode.PKCS7;
-
             if (mode == "ECB")
                 aes.Mode = CipherMode.ECB;
             else

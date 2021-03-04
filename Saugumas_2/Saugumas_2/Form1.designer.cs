@@ -60,6 +60,7 @@ namespace Saugumas_2
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.inputTextBox = new System.Windows.Forms.TextBox();
+            this.readEncryptedButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.keySizeGroupBox.SuspendLayout();
@@ -288,6 +289,7 @@ namespace Saugumas_2
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.readEncryptedButton);
             this.groupBox2.Controls.Add(this.writeOutputButton);
             this.groupBox2.Controls.Add(this.selectOutputButton);
             this.groupBox2.Controls.Add(this.readInputButton);
@@ -325,11 +327,11 @@ namespace Saugumas_2
             // 
             // readInputButton
             // 
-            this.readInputButton.Location = new System.Drawing.Point(258, 63);
+            this.readInputButton.Location = new System.Drawing.Point(147, 63);
             this.readInputButton.Name = "readInputButton";
-            this.readInputButton.Size = new System.Drawing.Size(193, 33);
+            this.readInputButton.Size = new System.Drawing.Size(145, 33);
             this.readInputButton.TabIndex = 31;
-            this.readInputButton.Text = "Read";
+            this.readInputButton.Text = "Read message";
             this.readInputButton.UseVisualStyleBackColor = true;
             this.readInputButton.Click += new System.EventHandler(this.readInputButton_Click);
             // 
@@ -337,7 +339,7 @@ namespace Saugumas_2
             // 
             this.selectInputButton.Location = new System.Drawing.Point(18, 63);
             this.selectInputButton.Name = "selectInputButton";
-            this.selectInputButton.Size = new System.Drawing.Size(193, 33);
+            this.selectInputButton.Size = new System.Drawing.Size(123, 33);
             this.selectInputButton.TabIndex = 30;
             this.selectInputButton.Text = "Select path";
             this.selectInputButton.UseVisualStyleBackColor = true;
@@ -374,6 +376,16 @@ namespace Saugumas_2
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(360, 29);
             this.inputTextBox.TabIndex = 27;
+            // 
+            // readEncryptedButton
+            // 
+            this.readEncryptedButton.Location = new System.Drawing.Point(298, 63);
+            this.readEncryptedButton.Name = "readEncryptedButton";
+            this.readEncryptedButton.Size = new System.Drawing.Size(153, 33);
+            this.readEncryptedButton.TabIndex = 34;
+            this.readEncryptedButton.Text = "Read encrypted";
+            this.readEncryptedButton.UseVisualStyleBackColor = true;
+            this.readEncryptedButton.Click += new System.EventHandler(this.readEncryptedButton_Click);
             // 
             // Form1
             // 
@@ -440,6 +452,7 @@ namespace Saugumas_2
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label currentLabel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button readEncryptedButton;
     }
 }
 
